@@ -4,7 +4,15 @@ const { Pool } = pg.default;
 
 const connectionPool = new Pool({
   connectionString:
-    "postgresql://your-db-username:your-db-password@localhost:5432/your-db-name",
+    "postgresql://admin:admin@localhost:5432/lms",
+});
+
+connectionPool.connect((err) => {
+  if (err) {
+    console.error("Error connecting to database:", err.code);
+  } else {
+    console.log("Connected to database");
+  }
 });
 
 export default connectionPool;
